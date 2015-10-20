@@ -5,28 +5,28 @@ namespace DannyAllen;
 Class Cellr{
 
     public $download = true;
-    public $filename = 'myspreadsheet.csv';
-
-    private $output = false;
+    public $filename = 'spreadsheet.csv';
+    private $_output = false;
 
     /**
      * Public method __construct
      *
-     * Checks if there is an array set, and then puts them into key=>value pairs.
-     *
-     * @param $arr The array of values set by the user for use in the object.
+     * Runs init method.
+     * 
+     * @param array $data Values to add to the CSV.
      */
     
-        public function __construct($arr = false){
-            //check for array and that it has a value
-            if(is_array($arr) && count($arr)>0){
-                //loop through each array and set a param=>value for each
-                foreach($arr as $param => $value){
-                    $this->$param = $value;
+        public function __construct($data = array()){
+
+            //set up the CSV
+            $this->_init();
+
+            //add any initial data.
+            if(count($data) > 0){
+                foreach($data as $row){
+                    $this->addRow($row);
                 }
             }
-
-            $this->init();
         }
 
 
@@ -36,7 +36,7 @@ Class Cellr{
      * Opens the file and sets the appropriate headers.
      */
     
-        private function init(){
+        private function _init(){
 
             $this->_output = fopen("php://output", "w");
 

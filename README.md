@@ -21,7 +21,32 @@ If you are using composer you can instantiate the class like so:
     $spreadsheet = new DannyAllen\Cellr();
 ```
 
+Add data via the construct.
 
+```php
+    //initial data
+    $rows = [
+        
+        //row 1
+        array('column 1', 'column 2', 'column 3', 'column 4'),
+        
+        //row 2
+        array('a', 'b', 'c', 'd'),
+    ];
+
+    //instantiate
+    $spreadsheet = new DannyAllen\Cellr($rows);
+```
+
+Add another row after instantation.
+
+```php
+    //row 3
+    $more_data = array('green', 'blue', 'yellow', 'red');
+
+    //add another row
+    $spreadsheet->addRow($more_data);
+```
 
 ## Options
 
