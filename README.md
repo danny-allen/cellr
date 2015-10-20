@@ -48,6 +48,13 @@ Add another row after instantation.
     $spreadsheet->addRow($more_data);
 ```
 
+Close the connection.
+
+```php
+    //we're done - close the connection
+    $spreadsheet->close();
+```
+
 ## Options
 
 To do... sorry.
